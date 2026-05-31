@@ -13,83 +13,83 @@ return {
     local ok, wk = pcall(require, "which-key")
     if ok then
       wk.add({
-        { "<leader>fl", group = "Laravel" },
+        { "<leader>sL", group = "Laravel" },
       })
     end
   end,
   keys = {
     {
-      "<leader>fll",
+      "<leader>sLl",
       function()
         Laravel.pickers.laravel()
       end,
       desc = "Open Laravel Picker",
     },
     {
-      "<c-g>",
+      "<leader>sLv",
       function()
         Laravel.commands.run("view:finder")
       end,
       desc = "Open View Finder",
     },
     {
-      "<leader>fla",
+      "<leader>sLa",
       function()
         Laravel.pickers.artisan()
       end,
       desc = "Open Artisan Picker",
     },
     {
-      "<leader>flt",
+      "<leader>sLx",
       function()
         Laravel.commands.run("actions")
       end,
       desc = "Open Actions Picker",
     },
     {
-      "<leader>flr",
+      "<leader>sLr",
       function()
         Laravel.pickers.routes()
       end,
       desc = "Open Routes Picker",
     },
     {
-      "<leader>flh",
+      "<leader>sLh",
       function()
         Laravel.run("artisan docs")
       end,
       desc = "Open Documentation",
     },
     {
-      "<leader>flm",
+      "<leader>sLm",
       function()
         Laravel.pickers.make()
       end,
       desc = "Open Make Picker",
     },
     {
-      "<leader>flc",
+      "<leader>sLc",
       function()
         Laravel.pickers.commands()
       end,
       desc = "Open Commands Picker",
     },
     {
-      "<leader>flo",
+      "<leader>sLo",
       function()
         Laravel.pickers.resources()
       end,
       desc = "Open Resources Picker",
     },
     {
-      "<leader>flp",
+      "<leader>sLp",
       function()
         Laravel.commands.run("command_center")
       end,
       desc = "Open Command Center",
     },
     {
-      "<leader>flu",
+      "<leader>sLu",
       function()
         Laravel.commands.run("hub")
       end,
