@@ -1,9 +1,9 @@
 return {
-  -- HACK: Disables the select treesitter textobjects because the Dart treesitter parser is very inefficient.
-  -- Hopefully this gets fixed and this block can be removed in the future.
+  -- Dart treesitter parser + hack: disable textobjects for Dart (very inefficient parser)
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
+      opts.ensure_installed = vim.list_extend(opts.ensure_installed or {}, { "dart" })
       local select = vim.tbl_get(opts, "textobjects", "select")
       if select then
         select.disable = select.disable or {}
@@ -14,12 +14,14 @@ return {
     end,
   },
 
-  -- Disable dartls from lspconfig - flutter-tools manages it
+  -- Dart formatting via dart_format
   {
-    "neovim/nvim-lspconfig",
-    opts = function(_, opts)
-      opts.servers.dartls = nil
-    end,
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        dart = { "dart_format" },
+      },
+    },
   },
 
   -- Flutter tools
@@ -31,11 +33,11 @@ return {
     },
     ft = { "dart" },
     opts = {
-      debugger = { enabled = true },
+      debugger = { enabled = false },
     },
   },
 
-  -- Load telescope flutter extension
+  -- Telescope flutter extension
   {
     "nvim-telescope/telescope.nvim",
     optional = true,
